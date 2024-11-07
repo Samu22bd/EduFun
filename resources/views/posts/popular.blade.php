@@ -7,33 +7,21 @@
 <div>
     <h1>Popular</h1>
     <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Judul</th>
-                    <th>Waktu Post</th>
-                    <th>Penulis</th>
-                    <th>Material</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($postList as $post)
-                <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$post->title}}</td>
-                    <td>{{$post->postDate}}</td>
-                    <td>{{$post->writer->name}}</td>
-                    <td>{{$post->material}}</td>
-                    <td>
-                        <a href="post/{{$post->id}}">
-                            <button>Read More</button>
-                        </a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+        @foreach ($postList as $post)
+        <div class="row p-3">
+            <div class="col-3">
+                <img src="" alt="This is the image">
+            </div>
+            <div class="col-9">
+                <h3>{{$post->title}}</h3>
+                <p class="m-0">{{$post->postDate}}| by: {{$post->writer->name}}</p>
+                <h4>{{$post->summary}}</h4>
+                <a href="post/{{$post->id}}">
+                    <button>read more...</button>
+                </a>
+            </div>
+        </div>
+        @endforeach
     </div>
     {{$postList->links()}}
 </div>
